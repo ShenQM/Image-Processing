@@ -1,0 +1,18 @@
+close all;
+filename = 'E:\Projects\data\jpeg\lena.jpg';
+% image = hdrread(filename);
+image = rgb2gray(imread(filename));
+wsize = 3;
+sigma_s = 5;
+sigma_r = 25;
+num_seg = 256;
+scale = 1;
+figure('name','orginal image');
+imshow(image);
+imwrite(image, 'org.jpg');
+%bilateral_image = uint8(imbilateral( image, wsize, sigma_d, sigam_r));
+[ bilateral_image ] = fast_bilat( image, num_seg, wsize, sigma_s, sigma_r, scale );
+bilateral_image = uint8(bilateral_image);
+figure('name','bilateral filtered image');
+imshow(bilateral_image, []);
+imwrite(bilateral_image, [filename, num2str(num_seg) '_', num2str(scale), '.jpg']);

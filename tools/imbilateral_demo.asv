@@ -1,0 +1,7 @@
+filename = '../temp/data/lena.jpg';
+image = rgb2gray(imread(filename));
+wsize = 5;
+sigma_d = 2;
+sigam_r = 0.12;
+figure('orginal image'
+bilater_image = imbilateral( image, wsize, sigma_d, sigam_r)

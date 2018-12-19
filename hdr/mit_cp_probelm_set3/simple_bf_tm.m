@@ -1,0 +1,18 @@
+function [ output_args ] = simple_bf_tm( image, out_range )
+%SIMPLE_BF_TM 此处显示有关此函数的摘要
+%   此处显示详细说明
+    intensity = (image(:,:,1)*20 + image(:,:,2)*40 + image(:,:,3))/61;
+    r = image(:,:,1)./intensity;
+    g = image(:,:,2)./intensity;
+    b = image(:,:,3)./intensity;
+    
+    log_base = imbilateral(log(intensity));
+    log_detail = log(intensity) - log_base;
+    compressfact = log(out_range)/(max(log_base)-min(log_base));
+    log_offset = -max(log_base)*compressfact;
+    log_out_intensity = log_base*compressfact + log_offset + log_detail;
+    r_out = r*exp(log_out_intensity);
+    g_out = g*exp(log_out_intensity);
+    b_out = b*exp(log_out_intensity); 
+end
+

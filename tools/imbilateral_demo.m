@@ -1,0 +1,13 @@
+close all;
+filename = 'E:\Projects\Image-Processing\temp\data\lena.jpg';
+image = rgb2gray(imread(filename));
+wsize = 5;
+sigma_d = 5;
+sigam_r = 5;
+figure('name','orginal image');
+imshow(image);
+imwrite(image, 'org.jpg');
+bilateral_image = uint8(imbilateral( image, wsize, sigma_d, sigam_r));
+figure('name','bilateral filtered image');
+imshow(bilateral_image);
+imwrite(bilateral_image, 'bilateral.jpg');
