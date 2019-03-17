@@ -1,5 +1,5 @@
 %  Created by  Shen Quanmin on 2019/02/24.
-%  Copyright ? 2018 Shen Quanmin. All rights reserved.
+%  Copyright ? 2019 Shen Quanmin. All rights reserved.
 function [ edges_res ] = canny(image,kernel_sz, sigma, low_thresh, high_thresh)
 %CANNY detect the edge in the image using canny algorithm.
 % Main algorithm steps:
